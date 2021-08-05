@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 /*
   This example requires Tailwind CSS v2.0+ 
@@ -78,7 +78,7 @@ function FbVideoPager() {
     const totalWidth = pager.current.scrollWidth - pager.current.clientWidth;
 
     currentScrollLeft > 0 ? setShowLeftBtn(true) : setShowLeftBtn(false);
-    totalWidth == currentScrollLeft ? setShowRightBtn(false) : setShowRightBtn(true);
+    totalWidth === currentScrollLeft ? setShowRightBtn(false) : setShowRightBtn(true);
   }
 
   const LeftBtn = () => (
@@ -107,13 +107,13 @@ function FbVideoPager() {
 
   return (
     <div>
-      <div aria-label="Start a Video Chat" role="region" class="relative bg-white border border-gray-150 shadow rounded-lg max-w-lg mx-auto shadow-md mb-5 mt-5">
+      <section aria-label="Start a Video Chat"  class="relative bg-white border border-gray-150 rounded-lg max-w-2xl mx-auto shadow-md mb-5 mt-5">
         <h3 class="sr-only">Start a Video Chat</h3>  
         {showLeftBtn ? <LeftBtn/> : null}
         {showRightBtn ? <RightBtn/> : null}
         <div ref={pager} onScroll={setButtonState} class="relative w-full overflow-x-auto scrollbar-hide">
           <div class="whitespace-nowrap pt-2.5 px-4 pb-1.5">
-            <button class="inline-flex relative mr-2 relative -top-1.5 bg-white border-2 border-blue-100 rounded-full px-3 py-2 items-center font-medium text-blue-500 hover:bg-gray-100 text-base">
+            <button class="inline-flex relative mr-2 -top-1.5 bg-white border-2 border-blue-100 rounded-full px-3 py-2 items-center font-medium text-blue-500 hover:bg-gray-100 text-base">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="#7C59C7" viewBox="0 0 24 24" stroke="">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
               </svg>
@@ -132,7 +132,7 @@ function FbVideoPager() {
             ))}
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

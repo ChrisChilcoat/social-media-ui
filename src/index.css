@@ -6,7 +6,15 @@
     display: none;
   }
   .scrollbar-hide:{
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .__react_component_tooltip {
+    padding: 6px 8px !important;
+  }
+}
+@variants group-hover, hover, focus {
+  .visible {
+    visibility: visible;
   }
 }

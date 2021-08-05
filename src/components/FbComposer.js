@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 
+const user = {
+  name: 'Chelsea Hagon',
+  email: 'chelseahagon@example.com',
+  imageUrl: 'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+}
+
 class FbComposer extends Component {
   render() {
     return (
-      <div>
-        <div aria-label="Create a post" role="region" class="bg-white border border-gray-150 shadow rounded-lg max-w-lg mx-auto shadow-md mb-5 mt-5">
+      <section>
+        <div aria-label="Create a post" role="region" class="bg-white border border-gray-150 rounded-lg max-w-2xl mx-auto shadow-md mb-5 mt-5">
           <h3 class="sr-only">Create a post</h3>
           <div class="w-full flex items-center justify-between py-3 px-4 space-x-2">
-            <a aria-label="Chris Chilcoat's Timeline" role="link" tabindex="0" class="flex-shrink-0 rounded-full flex-shrink-0 hover:bg-black block focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60" href="#">
+            <button role="link" tabindex="0" class="rounded-full flex-shrink-0 hover:bg-black block focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60" href="#">
               <div>
-                <img class="w-10 h-10 bg-gray-300  hover:opacity-90 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60" alt=""></img>
+                <img class="w-10 h-10 bg-gray-300  hover:opacity-90 rounded-full" src={user.imageUrl} alt={user.name}></img>
               </div>
-            </a>
+            </button>
             <div role="button" tabindex="0" class="bg-gray-100 hover:bg-gray-200 rounded-full px-4 py-2 flex-1 text-gray-500 text-left focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60">
               <div><span>What's on your mind, Chris?</span></div>
             </div>
@@ -43,7 +49,7 @@ class FbComposer extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     )
   }
 }
