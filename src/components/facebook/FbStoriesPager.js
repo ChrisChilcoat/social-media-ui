@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, createRef, useEffect } from 'react';
+import { PlusIcon, ChevronRightIcon } from '@heroicons/react/solid';
 
 /*
   This example requires Tailwind CSS v2.0+ 
@@ -45,9 +46,10 @@ const stories = [
 ]
 
 function FbStoriesPager() {
-  const [nextBtn, setNextBtn] = React.useState(true);
-  const [scrollPosition, setScrollPosition] = React.useState();
-  const pager = React.createRef();
+  const [nextBtn, setNextBtn] = useState(true);
+  const [scrollPosition, setScrollPosition] = useState();
+  const [loaded, setLoaded] = useState(false);
+  const pager = createRef();
   const style = {
     btn: { 
       'height': Math.round(215 - scrollPosition / .79),
@@ -55,7 +57,7 @@ function FbStoriesPager() {
       'borderBottomLeftRadius': 0,
       'borderBottomRightRadius': Math.round(15 + scrollPosition / 8),
       'borderTopLeftRadius':  0,
-      'borderTopRightRadius': Math.round(15 + scrollPosition / 8),
+      'borderTopRightRadius': Math.round(15 + scrollPosition / 8),  
       'paddingTop': Math.round(scrollPosition / 15.5),
     },
     img: {
@@ -77,7 +79,6 @@ function FbStoriesPager() {
     const currentScrollLeft = pager.current.scrollLeft;
     currentScrollLeft < 125 ? setScrollPosition(currentScrollLeft) : setScrollPosition(125);
     toggleNextBtn();
-    console.log(style.svg.left);
   }
   const toggleNextBtn = () => {
     const totalWidth = pager.current.scrollWidth - pager.current.clientWidth;
@@ -90,67 +91,109 @@ function FbStoriesPager() {
     })
   }
   const NextBtn = () => (
-    <button onClick={() => scrollRight()} class="hidden sm:inline-flex -right-5 -mt-7 top-1/2 z-30 absolute items-center px-2 py-2 rounded-full shadow border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60">
-      <span class="sr-only">Next</span>
-      <svg class="h-8 w-8" x-description="Heroicon name: solid/chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+    <button onClick={() => scrollRight()} className="absolute items-center hidden px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full shadow sm:inline-flex -right-5 -mt-7 top-1/2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60">
+      <span className="sr-only">Next</span>
+      <ChevronRightIcon  className="w-8 h-8" />
     </button>
   )
   const AddBtn = () => (
-    <button style={style.btn} class={ (scrollPosition < 6 || scrollPosition == null ? 'hidden' : null) + " overflow-hidden transform -translate-y-1/2 top-1/2 transform-gpu -left-5 top-1 w-1/5 z-30 absolute items-center ml-5 rounded-xl shadow border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60"}>
-      <img style={style.img} alt="User Name" class="max-h-40 max-w-40 m-auto not-sr-only object-cover w-full h-4/5 relative" 
+    <button style={style.btn} className={ (scrollPosition < 6 || scrollPosition == null ? 'hidden' : null) + " overflow-hidden transform -translate-y-1/2 top-1/2 -left-5 w-1/5 z-30 absolute items-center ml-5 rounded-xl shadow border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60"}>
+      <img style={style.img} alt="User Name" className="relative object-cover w-full m-auto not-sr-only max-h-40 max-w-40 h-4/5" 
         src='https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80'
       ></img>
       <div className="relative z-50 bg-white group-hover:bg-gray-100 h-1/5">
-        <svg style={style.svg} xmlns="http://www.w3.org/2000/svg" class="absolute m-h-8 m-w-8 text-white bg-blue-500 block rounded-full bottom-1/3 left-1/2 -ml-4 -top-4 border-4" fill="none" viewBox="-3 -3 30 30" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-        </svg>
-        <span style={style.label} class="text-gray-700 block m-auto pt-4 text-xs font-medium">Create Story</span>
+        <PlusIcon style={style.svg} className="absolute block -ml-4 text-white bg-blue-500 border-4 rounded-full m-h-8 m-w-8 bottom-1/3 left-1/2 -top-4" />
+        <span style={style.label} className="block pt-4 m-auto text-xs font-medium text-gray-700">Create Story</span>
       </div>
     </button>
   )
+  useEffect(() => {
+    setTimeout(function(){
+      setLoaded(true);
+    }, 3000);
+  });
+  
   return (
-    <section aria-label="View Stories" className="relative max-w-xl max-w-2xl mx-auto mt-5 mb-5">
-      <AddBtn/>
-      <div ref={pager} onScroll={update} class="relative w-full overflow-x-auto scrollbar-hide">
-        <ul className="whitespace-nowrap">
-          <li className={ (scrollPosition > 5 ? 'invisible' : null) + " align-top relative inline-block w-1/4 sm:w-1/5"}>
-            <button class="relative m-1 group overflow-hidden shadow transition-transform bg-black rounded-xl group h-48 transform-gpu active:scale-98 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60 z-10">
-              <img class="not-sr-only object-cover w-full h-4/5 relative transition-transform transform-gpu opacity-80 group-hover:opacity-75 group-focus:opacity-75 group-hover:scale-102 group-focus:scale-102" 
-                src='https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80'
-                alt="User Name"
-              ></img>
-              <div className="relative z-50 bg-white group-hover:bg-gray-100 h-1/5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white bg-blue-500 block rounded-full mx-auto absolute bottom-1/3 left-1/2 -ml-4 -top-4 border-4 border-white group-hover:border-gray-100" fill="none" viewBox="-3 -3 30 30" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-                <div class="text-gray-700 block m-auto pt-4 text-xs font-medium">Create Story</div>
-              </div>
-            </button>
-          </li>
-          {stories.map((story) => 
-            <li key={story.name} className="relative inline-block w-1/4 bg-gray-100 sm:w-1/5">
-              <button className="relative h-48 m-1 overflow-hidden transition-transform bg-black shadow rounded-xl group transform-gpu active:scale-98 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60">
-                <img class="not-sr-only object-cover w-full h-full  relative transition-transform transform-gpu opacity-80 group-hover:opacity-75 group-focus:opacity-75 group-hover:scale-102 group-focus:scale-102" 
-                  src={story.imageUrl}
-                  alt={story.name}
+    loaded ? ( // Render Widget if images are pre loaded...
+      <section aria-label="View Stories" className="relative max-w-2xl mx-auto mt-5 mb-5">
+        <AddBtn/>
+        <div ref={pager} onScroll={update} className="relative w-full overflow-x-auto scrollbar-hide">
+          <ul className="whitespace-nowrap">
+            <li className={ (scrollPosition > 5 ? 'invisible' : null) + " align-top relative inline-block w-1/4 sm:w-1/5 p-1"}>
+              <button aria-label={'Create a new story'} className="relative z-10 w-full h-48 overflow-hidden transition-transform bg-black shadow group rounded-xl transform-gpu active:scale-98 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60">
+                <img aria-hidden="true" className="relative object-cover w-full transition-transform not-sr-only h-4/5 transform-gpu opacity-80 group-hover:opacity-75 group-focus:opacity-75 group-hover:scale-102 group-focus:scale-102" 
+                  src='https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80'
+                  alt="User Name"
                 ></img>
-                <div class="rounded-full absolute border-4 border-blue-500 top-3 left-3 group-hover:opacity-90 group-focus:opacity-90">
-                  <img class="h-8 w-8 bg-gray-300 rounded-full hover:opacity-90" 
-                    src={story.avatarURL}
-                    alt={story.name}></img>  
-                </div>
-                <div class="absolute bottom-3 left-3 text-white filter drop-shadow leading-tight text-left group-hover:opacity-90 group-focus:opacity-90">
-                  {story.name.split(" ").map((val) => (
-                    <div>{val}</div>
-                  ))}
+                <div aria-hidden="true" className="relative z-50 bg-white group-hover:bg-gray-100 h-1/5">
+                  <PlusIcon className="absolute block w-8 h-8 mx-auto -ml-4 text-white bg-blue-500 border-4 border-white rounded-full bottom-1/3 left-1/2 -top-4 group-hover:border-gray-100"/>
+                  <div className="block pt-4 m-auto text-xs font-medium text-gray-700">Create Story</div>
                 </div>
               </button>
             </li>
-          )}
-        </ul>
-      </div>
-      {nextBtn ? <NextBtn/> : null}
-    </section>
+            {stories.map((story, index) => 
+              <li key={story.name} className="relative inline-block w-1/4 p-1 bg-gray-100 sm:w-1/5">
+                <button aria-label={'View ' + story.name + '\'s Story'} className="relative w-full h-48 overflow-hidden transition-transform bg-black shadow rounded-xl group transform-gpu active:scale-98 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60">
+                  <img aria-hidden="true" className="relative object-cover w-full h-full transition-transform not-sr-only transform-gpu opacity-80 group-hover:opacity-75 group-focus:opacity-75 group-hover:scale-102 group-focus:scale-102" 
+                    src={story.imageUrl}
+                    alt={story.name}
+                  ></img>
+                  <div aria-hidden="true" className="absolute border-4 border-blue-500 rounded-full top-3 left-3 group-hover:opacity-90 group-focus:opacity-90">
+                    <img className="w-8 h-8 bg-gray-300 rounded-full hover:opacity-90" 
+                      src={story.avatarURL}
+                      alt={story.name}></img>  
+                  </div>
+                  <div aria-hidden="true" className="absolute leading-tight text-left text-white bottom-3 left-3 filter drop-shadow group-hover:opacity-90 group-focus:opacity-90">
+                    {story.name.split(" ").map((val) => (
+                      <div>{val}</div>
+                    ))}
+                  </div>
+                </button>
+              </li>
+            )}
+          </ul>
+        </div>
+        {nextBtn ? <NextBtn/> : null}
+      </section>
+    ) : ( // Render Loading placeholder if images are not pre loaded...
+      <section aria-hidden="true" className="relative max-w-2xl mx-auto mt-5 mb-5">
+        <div className="relative w-full overflow-x-hidden scrollbar-hide">
+          <ul className="whitespace-nowrap">
+            <li className="relative inline-block w-1/4 p-1 align-top sm:w-1/5">
+              <div className="relative z-10 w-full h-48 overflow-hidden transition-transform bg-black shadow group rounded-xl">
+                <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-gray-100 to-gray-200">
+                  <span className="absolute top-0 left-0 w-full h-full rounded-md bg-gradient-to-t from-gray-200 to-gray-500 pulse animate-pulse"></span>
+                </span>
+                <div className="absolute bottom-0 z-50 w-full bg-white h-1/5">
+                  <div className="absolute block w-8 h-8 mx-auto -ml-4 text-white bg-blue-500 border-4 border-white rounded-full bottom-1/3 left-1/2 -top-4 " ></div>
+                  <div className="block pt-4 m-auto text-xs font-medium text-center text-gray-700">Create Story</div>
+                </div>
+              </div>
+            </li>
+            {stories.map((story) => 
+              <li key={story.name} className="relative inline-block w-1/4 p-1 bg-gray-50 sm:w-1/5">
+                <div className="relative w-full h-48 overflow-hidden transition-transform bg-black shadow rounded-xl group">
+                  <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-gray-100 to-gray-200">
+                    <span className="absolute top-0 left-0 w-full h-full rounded-md bg-gradient-to-t from-gray-200 to-gray-500 pulse animate-pulse"></span>
+                  </span>
+                  <div className="absolute border-4 border-blue-500 rounded-full top-3 left-3">
+                    <div className="w-8 h-8"></div>  
+                  </div>            
+                  <div className="absolute leading-tight text-left text-white bottom-3 left-3 filter drop-shadow">
+                    {story.name.split(" ").map((val) => (
+                      <div>{val}</div>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            )}
+          </ul>
+        </div>
+        <div className="absolute items-center hidden px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full shadow sm:inline-flex -right-5 -mt-7 top-1/2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60">
+          <span className="w-8 h-8"></span>
+        </div>
+      </section>
+    )
   )
 }
 

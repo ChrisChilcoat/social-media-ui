@@ -19,7 +19,13 @@ module.exports = {
     extend: {
       scale: ['active', 'group-hover', 'focus', 'group-focus'],
       opacity: ['active', 'group-hover', 'focus', 'group-focus'],
-      borderColor: ['active', 'group-hover', 'focus', 'group-focus']    
+      borderColor: ['active', 'group-hover', 'focus', 'group-focus'],  
+      backgroundColor: ['active', 'group-hover', 'focus', 'group-focus'],  
     }
   },
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography'),
+    // ...
+  ],
 }

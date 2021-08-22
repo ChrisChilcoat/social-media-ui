@@ -17,4 +17,5 @@
   .visible {
     visibility: visible;
   }
-}
+} 
+@import ./components/FbComposer.scss;

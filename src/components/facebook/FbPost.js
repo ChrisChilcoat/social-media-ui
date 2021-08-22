@@ -202,7 +202,7 @@ function FbPost() {
     
   return (
     <article>
-      <div aria-label="Create a post" role="region" className="max-w-2xl mx-auto mt-5 mb-5 bg-white border rounded-lg shadow shadow-md border-gray-150">
+      <div aria-label="Create a post" role="region" className="max-w-2xl mx-auto mt-5 mb-5 bg-white border rounded-lg shadow-sm shadow border-gray-150">
         <div className="flex items-center justify-between w-full px-4 py-2 space-x-2">
           <button aria-label="Chris Chilcoat's Timeline" role="link" tabIndex="0" className="flex-shrink-0 block rounded-full hover:bg-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60">
             <div>

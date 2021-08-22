@@ -24,7 +24,7 @@ const shortcuts = [
   { name: 'Show More', href: '#', icon: ChevronDownIcon, current: false },
 ]
 
-function FbShortcuts() {
+export default function FbShortcuts() {
   return (
     <div className="group" aria-labelledby="shortcuts-heading">
       <div className="flex items-center group">
@@ -60,5 +60,3 @@ function FbShortcuts() {
     </div>
   )
 }
-
-export default FbShortcuts;

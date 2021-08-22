@@ -1,0 +1,46 @@
+$bg-color: white;
+$border-color: rgb(229,231,235);
+$shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+.fb-composer  {
+  background-color: $bg-color;
+  border: 1px solid $border-color;
+  border-radius: 0.5rem;
+  max-width: 42rem;
+  margin: 1.25rem auto;
+  box-shadow: $shadow;
+  h3 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  > div:first-of-type {
+    background-color: red;
+    button {
+      background-color: rgb(160, 157, 157);
+      img {
+        background-color: #a09d9d;
+        border-radius: 9999px;
+        &:hover {
+          opacity: .8;
+        }
+        &:focus {
+
+        }
+      }
+    }
+    > div:last-of-type {
+        border: 1px solid blue;
+    }
+  }
+  > div:last-child {
+    background-color: blue;
+
+  }
+}

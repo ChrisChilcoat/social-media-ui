@@ -1,4 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import { Transition, Popover } from '@headlessui/react'
+import { usePopper } from 'react-popper'
+
+
+import { XIcon, ExclamationIcon, InformationCircleIcon, DotsHorizontalIcon } from '@heroicons/react/outline'
+
+const menu = [
+  { name: 'Hide Ad', subtext: 'Never see this ad again.', icon: XIcon },
+  { name: 'Report Ad', subtext: 'Tell us about a problem with this ad.', icon: ExclamationIcon},
+  { name: 'Why am I seeing this?', href: '#', icon: InformationCircleIcon},
+  // More menu items...
+]
 
 const contacts = [
   { name: 'Angela Fisher', hasStory: false, avatarURL: 'https://images.unsplash.com/photo-1501031170107-cfd33f0cbdcc?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80'},
@@ -20,6 +33,84 @@ const contacts = [
 ]
 
 function FbContacts() {
+
+  const Flyout = props => {
+    const [referenceElement, setReferenceElement] = useState()
+    const [popperElement, setPopperElement] = useState()
+    const { styles, attributes } = usePopper(referenceElement, popperElement, { 
+      placement: 'left',
+      modifiers: [
+        {
+          name: 'preventOverflow',
+          options: {
+            altAxis: true,
+            padding: { top: 55, bottom: 10 },
+          },
+        },
+      ], 
+
+    })
+
+    return (
+      <Popover>
+        {({ open }) => (
+          <>
+            <Popover.Button 
+              ref={setReferenceElement}
+              key={props.name}
+              aria-label={'Chat with ' + props.name} 
+              aria-expanded="false"
+              className="flex items-center w-full p-2 space-x-3 transition duration-200 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-inset focus:ring-opacity-60"
+            >
+              <div className="relative flex-shrink-0">
+                <img className={(props.hasStory ? 'p-0.5 border-2 border-blue-500' : '') + " w-9 h-9 rounded-full"} src={props.avatarURL} alt={props.name} />
+                <span className="absolute bottom-0 right-0 block w-2 h-2 bg-green-400 rounded-full ring-2 ring-white" />
+              </div>
+              <div className="flex-1 min-w-0 ml-2 text-left">
+                <p className="text-sm font-medium text-gray-800">{props.name}</p>
+              </div>
+            </Popover.Button>  
+            {ReactDOM.createPortal(
+              <Popover.Panel
+                key={props.name}
+                ref={setPopperElement}
+                style={styles.popper}
+                {...attributes.popper}
+              >
+                <Transition
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <div className="relative bg-white w-96 rounded-md shadow p-4 mt-3.5 mr-3 flex"> 
+                    <div class="relative flex-shrink-0 mr-3">
+                      <img class="w-20 h-20 rounded-full" src={props.avatarURL} alt={props.name}></img>
+                    </div>
+                    <div>
+                      <h4 class="font-bold text-lg">{props.name}</h4>
+                      <div class="flex">
+                        <div></div>
+                        <div></div>
+                      </div>
+                      <div class="flex">
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
+                  </div>
+                </Transition>
+              </Popover.Panel>,
+              document.getElementById('portal')
+            )}
+          </> 
+        )}
+      </Popover>
+    )
+  }
+
   return (
     <section aria-labelledby="contacts-heading">
       <div className="flex items-center">
@@ -45,17 +136,14 @@ function FbContacts() {
         </div>
       </div>
       <ul>
-        {contacts.map((contact) => (
-          <li key={contact.name} className="flex">
-            <a href="#" role="link" className="flex items-center w-full p-2 space-x-3 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-inset focus:ring-opacity-60">
-              <div className="relative flex-shrink-0">
-                <img className={(contact.hasStory ? 'p-0.5 border-2 border-blue-500' : '') + " w-9 h-9 rounded-full"} src={contact.avatarURL} alt={contact.name} />
-                <span className="absolute bottom-0 right-0 block w-2 h-2 bg-green-400 rounded-full ring-2 ring-white" />
-              </div>
-              <div className="flex-1 min-w-0 ml-2 text-left">
-                <p className="text-sm font-medium text-gray-800">{contact.name}</p>
-              </div>
-            </a>
+        {contacts.map((item, index) => (
+          <li key={item.name} className="relative">
+            <Flyout
+              name={item.name}
+              url={item.url} 
+              href={item.href} 
+              avatarURL={item.avatarURL} 
+            />
           </li>
         ))}
       </ul>       

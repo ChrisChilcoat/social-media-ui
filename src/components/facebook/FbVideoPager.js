@@ -83,7 +83,7 @@ function FbVideoPager() {
 
   const LeftBtn = () => (
     <button 
-      class=" left-5 top-2 z-30 absolute inline-flex items-center px-2 py-2 rounded-full border shadow border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+      className="absolute inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full shadow  left-5 top-2 hover:bg-gray-50"
       onClick={() => scrollLeft()}
       >
       <span class="sr-only">Previous</span>
@@ -95,7 +95,7 @@ function FbVideoPager() {
   
   const RightBtn = () => (
     <button
-      class="hidden sm:inline-flex right-5 top-2 z-30 absolute items-center px-2 py-2 rounded-full shadow border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+      className="absolute items-center hidden px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full shadow sm:inline-flex right-5 top-2 hover:bg-gray-50"
       onClick={() => scrollRight()}
       >
       <span class="sr-only">Next</span>
@@ -107,10 +107,8 @@ function FbVideoPager() {
 
   return (
     <div>
-      <section aria-label="Start a Video Chat"  class="relative bg-white border border-gray-150 rounded-lg max-w-2xl mx-auto shadow-md mb-5 mt-5">
+      <section aria-label="Start a Video Chat"  class="relative bg-white border border-gray-150 rounded-lg max-w-2xl mx-auto shadow-sm mb-5 mt-5">
         <h3 class="sr-only">Start a Video Chat</h3>  
-        {showLeftBtn ? <LeftBtn/> : null}
-        {showRightBtn ? <RightBtn/> : null}
         <div ref={pager} onScroll={setButtonState} class="relative w-full overflow-x-auto scrollbar-hide">
           <div class="whitespace-nowrap pt-2.5 px-4 pb-1.5">
             <button class="inline-flex relative mr-2 -top-1.5 bg-white border-2 border-blue-100 rounded-full px-3 py-2 items-center font-medium text-blue-500 hover:bg-gray-100 text-base">
@@ -131,6 +129,8 @@ function FbVideoPager() {
               </button>
             ))}
           </div>
+          {showLeftBtn ? <LeftBtn/> : null}
+          {showRightBtn ? <RightBtn/> : null}
         </div>
       </section>
     </div>
