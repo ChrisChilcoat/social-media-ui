@@ -8,7 +8,7 @@ import SiteStackedLayout from "./components/site/SiteStackedLayout";
 
 import FbHeader from "./components/facebook/FbHeader";
 import FbPost from "./components/facebook/FbPost";
-import FbComposer from "./components/facebook/FbComposer/FbComposer";
+import FbComposer from "./components/facebook/FbComposer";
 import FbStoriesPager from "./components/facebook/FbStoriesPager";
 
 export default function App() {
@@ -19,7 +19,7 @@ export default function App() {
           <SiteStackedLayout header={<SiteHeader/>} main={<><SitePageComponents/></>} />
         </Route>
         <Route path="/components/FbComposer">
-          <SiteThreeColumnLayout header={<SiteHeader/>} main={<FbComposer/>} />
+          <SiteThreeColumnLayout main={<FbComposer/>} />
         </Route>
         <Route path="/components/FbPost">
           <SiteThreeColumnLayout header={<SiteHeader/>}	main={<FbPost/>} />
