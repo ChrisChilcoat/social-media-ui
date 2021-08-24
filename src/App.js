@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 import SiteHeader from "./components/site/SiteHeader";
 import SitePageComponents from "./components/site/SitePageComponents";
@@ -13,7 +13,7 @@ import FbStoriesPager from "./components/facebook/FbStoriesPager";
 
 export default function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route path="/components" exact>
           <SiteStackedLayout header={<SiteHeader/>} main={<><SitePageComponents/></>} />
@@ -24,7 +24,7 @@ export default function App() {
         <Route path="/components/FbPost">
           <SiteThreeColumnLayout header={<SiteHeader/>}	main={<FbPost/>} />
         </Route>
-        <Route path={process.env.PUBLIC_URL + '/components/FbStoriesPager'}>
+        <Route path='/components/FbStoriesPager'>
           <SiteThreeColumnLayout main={<FbStoriesPager/>} />
         </Route>
         <Route path="/Documentation" exact>
