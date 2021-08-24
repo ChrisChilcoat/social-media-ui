@@ -1,15 +1,7 @@
 import React from "react";
 
 import {
-  FilmIcon,
-  BeakerIcon,
-  BookOpenIcon,
-  ChipIcon,
-  FlagIcon,
-  AcademicCapIcon,
-  GlobeIcon,
-  MusicNoteIcon,
-  ChevronDownIcon
+  ChipIcon
 } from '@heroicons/react/solid'
 
 const user = {
