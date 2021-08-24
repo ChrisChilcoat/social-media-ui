@@ -24,7 +24,7 @@ export default function App() {
         <Route path="/components/FbPost">
           <SiteThreeColumnLayout header={<SiteHeader/>}	main={<FbPost/>} />
         </Route>
-        <Route path="/components/FbStoriesPager">
+        <Route path={process.env.PUBLIC_URL + '/components/FbStoriesPager'}>
           <SiteThreeColumnLayout main={<FbStoriesPager/>} />
         </Route>
         <Route path="/Documentation" exact>
