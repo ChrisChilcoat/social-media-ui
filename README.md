@@ -13,7 +13,7 @@ A collection of widgets and layouts from popular social media applications.
 
     npm run start
 
-## Deploy site update to github pages.
+## Deploy
 
 This project uses the [gh-pages](https://www.npmjs.com/package/gh-pages) to package and deploy site updates to Github Pages.
 
