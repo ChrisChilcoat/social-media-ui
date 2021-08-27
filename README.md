@@ -27,4 +27,4 @@ This project uses Github Pages served from the `/docs` directory.
 
 **Step 3:** Make sure your GitHub Pages site is currently being built from the `/docs` folder in the `master` branch.
 
-[Update Branch](https://github.com/ChrisChilcoat/social-media-ui/settings/pages)
+[Update Build Source](https://github.com/ChrisChilcoat/social-media-ui/settings/pages)
