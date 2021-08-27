@@ -8,29 +8,23 @@ A collection of widgets and layouts from popular social media applications.
 
     npm install
 
-## Compile the Solidity contracts
 
-    npm compile
-
-## Start both the frontend and localhost dev hardhat node
-
-This will start a full testing environment, including compiling and deploying
-the smart contracts to a hardhat dev node running on `localhost`.
+## Start
 
     npm run start
 
-## Run a nodejs command in a workspace
+## Deploy site update to github pages.
 
-This project uses `nodejs` workspaces. To run a command in a workspace, append
-the -w `<workspace name>` flag, e.g.:
+This project uses the `gh-pages` plugin to package and deploy site updates to Github Pages.
 
-    npm install {package name} --save-dev -w app
-    # use --save instead of --save-dev if it's a runtime dep
+To push an update open package.json and update the production branch number in the deploy script.
 
-To use exec in a workspace:
+    "deploy": "npm run build&&gh-pages -b production_0.0.3 -d build"
 
-    npm exec -w <workspace name> -- <command>
+Build and deploy to the new branch.
 
-For example, start the `localhost` hardhat node:
+    npm run deploy
 
-    npm exec -w core -- hardhat node
+Set Github Pages to use the newly created branch.
+
+[Update Branch](https://github.com/ChrisChilcoat/social-media-ui/settings/pages)
