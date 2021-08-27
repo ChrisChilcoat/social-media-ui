@@ -9,22 +9,22 @@ A collection of widgets and layouts from popular social media applications.
     npm install
 
 
-## Start
+## Start Development Server
 
     npm run start
 
-## Deploy
+## Build Production Site
 
-This project uses the [gh-pages](https://www.npmjs.com/package/gh-pages) to package and deploy site updates to Github Pages.
+This project uses Github Pages served from the /docs directory.
 
-**Step 1:** To push an update open `package.json` and update the production branch number in the deploy script.
+**Step 1:** Build the production site files.
 
-    "deploy": "npm run build&&gh-pages -b production_0.0.3 -d build"
+    npm run build
 
-**Step 2:** Build and deploy to the new branch.
+**Step 2:** Push changes to master
 
-    npm run deploy
+    git commit -m "<Enter commit message>"
 
-**Step 3:** Set Github Pages to use the newly created branch.
+**Step 3:** Make sure your GitHub Pages site is currently being built from the `/docs` folder in the `master` branch.
 
 [Update Branch](https://github.com/ChrisChilcoat/social-media-ui/settings/pages)

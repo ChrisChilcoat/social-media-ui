@@ -26,9 +26,7 @@
     "start": "craco start",
     "build": "craco build && rm -rf docs && mv build docs",
     "test": "craco test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "npm run build&&gh-pages -b production_0.0.3 -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
