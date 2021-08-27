@@ -15,9 +15,9 @@ A collection of widgets and layouts from popular social media applications.
 
 ## Deploy site update to github pages.
 
-This project uses the `gh-pages` plugin to package and deploy site updates to Github Pages.
+This project uses the [gh-pages](https://www.npmjs.com/package/gh-pages) to package and deploy site updates to Github Pages.
 
-To push an update open package.json and update the production branch number in the deploy script.
+To push an update open `package.json` and update the production branch number in the deploy script.
 
     "deploy": "npm run build&&gh-pages -b production_0.0.3 -d build"
 
