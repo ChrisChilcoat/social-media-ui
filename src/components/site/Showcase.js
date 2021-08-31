@@ -1,12 +1,25 @@
 import React from "react";
+import ReactDOMServer from 'react-dom/server';
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
+import { text } from '../facebook/FbPost.js'; // Relative path to your File
+
+
 import { ClipboardIcon, CodeIcon, ArrowsExpandIcon } from '@heroicons/react/solid';
 
+const getCode = props => {
+  fetch('/Users/chrischilcoat/websites/social-media-ui/src/App.js')
+      .then(function(response){
+        return response.text();
+      }).then(function (data) {
+        console.log(data);
+      })
+}
+
 export default function Showcase(props) {
-  console.log(props.component);
+  console.log(props.component)
   return (
     <div className="bg-white border border-gray-200 rounded-lg border-1 mb-14">
       <div className="flex items-center px-2 py-2 space-x-2 text-sm font-medium text-gray-700 border-b border-gray-200 whitespace-nowrap border-1">
@@ -27,8 +40,9 @@ export default function Showcase(props) {
         </div>
       </div>
       <div className="">
-        <SyntaxHighlighter language="javascript" style={a11yDark}> 
-          {props.component.toString()}
+        <SyntaxHighlighter language="javascript" style={a11yDark} showLineNumbers>
+
+           ass
         </SyntaxHighlighter>
       </div>
     </div>
