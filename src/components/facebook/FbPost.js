@@ -53,7 +53,7 @@ const post = {
   ]
 };
 
-function FbPost() {
+export default function FbPost() {
   
   const renderImages = images => {
     switch(post.images.length) {
@@ -84,7 +84,7 @@ function FbPost() {
         {((props.level !== 3 && props.hasReplys) || (props.level !== 3 && props.replyVisible)) && <span className="absolute h-full border border-gray-100 left-4 border-left-2"></span>}     
         {((props.level !== 1 && props.parentHasReplys && !props.isLast) || (props.level === 3 && props.parentReplyVisible && props.isLast) || (props.level === 2 && props.parentReplyVisible)) && <span className="absolute h-full border border-gray-100 -left-7 border-left-2"></span>}
         {(props.parentParentReplyVisible) && <span className="absolute h-full ml-2 border border-gray-100 -left-20 border-left-2"></span>}
-        {(props.level !== 1) && <span className="absolute w-8 h-6 border border-t-0 border-b-2 border-l-2 border-r-0 border-gray-100 -left-7 top-3 rounded-bl-xl -top-2"></span>}
+        {(props.level !== 1) && <span className="absolute w-8 h-6 border border-t-0 border-b-2 border-l-2 border-r-0 border-gray-100 -left-7 rounded-bl-xl -top-2"></span>}
         <div className={"flex items-start w-full space-x-2 group"}> 
           <button className="z-10 flex-shrink-0 block border-2 border-white rounded-full focus:outline-none hover:bg-black focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60">
             <img className={(props.level === 1 ? 'w-8 h-8' : 'w-6 h-6') + " bg-gray-300 rounded-full hover:opacity-90"} src={props.avatarURL} alt=""></img>
@@ -94,7 +94,7 @@ function FbPost() {
               <div className="text-xs font-semibold">{props.name}</div>
               <div className="text-sm font-normal text-gray-800">{props.message}</div>
               {props?.likes > 0 && (
-                <button className="absolute right-0 flex p-1 text-xs text-gray-500 bg-white rounded-full shadow right-1 -bottom-3.5">
+                <button className="absolute flex p-1 text-xs text-gray-500 bg-white rounded-full shadow right-1 -bottom-3.5">
                   <svg xmlns="http://www.w3.org/2000/svg" className="relative inline-block w-4 h-4 mr-1 text-white bg-blue-500 rounded-full ring-1 ring-white" fill="currentColor" viewBox="-6 -4 30 30"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"></path></svg>
                   {props?.likes} 
                 </button>
@@ -118,7 +118,7 @@ function FbPost() {
         <li>
           <form className="relative">
             {props.level === 2 && <span className="absolute h-full ml-2 border border-gray-100 -left-20 border-left-2"></span>}      
-            <span className="absolute w-8 h-6 border border-t-0 border-b-2 border-l-2 border-r-0 border-gray-100 -left-7 top-3 rounded-bl-xl -top-2"></span>
+            <span className="absolute w-8 h-6 border border-t-0 border-b-2 border-l-2 border-r-0 border-gray-100 -left-7 rounded-bl-xl -top-2"></span>
             <div className="flex items-center justify-between w-full pb-3 pr-10 space-x-2">
               <button aria-label="Chris Chilcoat's Timeline" role="link" tabIndex="0" className="z-20 flex-shrink-0 block border-2 border-white rounded-full hover:bg-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60">
                 <img className="w-6 h-6 bg-gray-300 rounded-full hover:opacity-90" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""></img>
@@ -202,7 +202,7 @@ function FbPost() {
     
   return (
     <article>
-      <div aria-label="Create a post" role="region" className="max-w-2xl mx-auto mt-5 mb-5 bg-white border rounded-lg shadow-sm shadow border-gray-150">
+      <div aria-label="Create a post" role="region" className="max-w-2xl mx-auto mt-5 mb-5 bg-white border rounded-lg shadow border-gray-150">
         <div className="flex items-center justify-between w-full px-4 py-2 space-x-2">
           <button aria-label="Chris Chilcoat's Timeline" role="link" tabIndex="0" className="flex-shrink-0 block rounded-full hover:bg-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-opacity-60">
             <div>
@@ -264,5 +264,3 @@ function FbPost() {
     </article>
   )
 }
-
-export default FbPost;

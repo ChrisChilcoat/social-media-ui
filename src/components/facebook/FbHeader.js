@@ -63,7 +63,7 @@ export default function FbHeader() {
   }
 
   return (
-    <header className="relative z-40 bg-white shadow-sm" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <header className="relative bg-white shadow-sm" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className="px-3 mx-auto max-w-screen-2xl">
         <div className="flex items-center justify-between py-1">
           <div className="flex justify-start md:w-3/12">

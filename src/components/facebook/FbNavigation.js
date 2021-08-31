@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  FlagIcon,
   UsersIcon,
   ChevronDownIcon,
   VideoCameraIcon,
@@ -24,7 +23,7 @@ const navigation = [
   { name: 'Show More', href: '#', icon: ChevronDownIcon, current: false },
 ]
 
-function FbNavigation() {
+export default function FbNavigation() {
   return (
     <ul className="py-2 space-y-1">               
       <li>
@@ -52,5 +51,3 @@ function FbNavigation() {
     </ul>
   )
 }
-
-export default FbNavigation;
