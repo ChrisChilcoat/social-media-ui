@@ -9,14 +9,7 @@ import { text } from '../facebook/FbPost.js'; // Relative path to your File
 
 import { ClipboardIcon, CodeIcon, ArrowsExpandIcon } from '@heroicons/react/solid';
 
-const getCode = props => {
-  fetch('/Users/chrischilcoat/websites/social-media-ui/src/App.js')
-      .then(function(response){
-        return response.text();
-      }).then(function (data) {
-        console.log(data);
-      })
-}
+
 
 export default function Showcase(props) {
   console.log(props.component)
