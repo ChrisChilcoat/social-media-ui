@@ -29,7 +29,9 @@
     "start": "craco start",
     "build": "craco build && rm -rf docs && mv build docs",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "npm run build&&gh-pages -b production_0.0.4 -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -54,7 +56,6 @@
     "gh-pages": "^3.2.3",
     "postcss": "^7.0.36",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4",
-    "tailwindcss-nested-groups": "^1.2.4",
-    "typescript": "3.3.3"
+    "tailwindcss-nested-groups": "^1.2.4"
   }
 }
