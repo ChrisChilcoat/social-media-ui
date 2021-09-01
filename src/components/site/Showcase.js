@@ -35,7 +35,7 @@ export default function Showcase(props) {
       <div className="">
         <SyntaxHighlighter language="javascript" style={a11yDark} showLineNumbers>
 
-           ass
+           Insert compoent code here...
         </SyntaxHighlighter>
       </div>
     </div>
