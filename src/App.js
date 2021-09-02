@@ -4,6 +4,7 @@ import ScrollToTop from "./components/site//ScrollToTop";
 
 import Header from "./components/site/Header";
 import Components from "./components/site/Components";
+import Home from "./components/site/Home";
 import Showcase from "./components/site/Showcase";
 import Breadcrumbs from "./components/site/Breadcrumbs";
 import ThreeColumnLayout from "./components/site/ThreeColumnLayout";
@@ -209,7 +210,7 @@ export default function App() {
               />
             </Route>
             <Route path="/">
-              <ThreeColumnLayout header={<Header/>} />
+              <StackedLayout main={<Home/>} />
             </Route>
           </Switch>
         </ScrollToTop>
