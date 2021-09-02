@@ -5,7 +5,7 @@ export default function SiteHeader() {
   return (
     <div className="flex flex-wrap content-center h-screen col-span-12">
       <div className="sm:text-center lg:text-left">
-        <h1 className="text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl md:text-6xl bg-clip-text bg-gradient-to-r from-blue-900 to-green-400">
+        <h1 className="text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl md:text-6xl bg-clip-text bg-gradient-to-r from-green-400 to-blue-900">
           <span className="block xl:inline">Social Media</span>
           <span className="block text-green-200 xl:inline"> UI</span>
         </h1>
