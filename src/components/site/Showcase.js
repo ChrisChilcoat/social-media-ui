@@ -1,15 +1,9 @@
 import React from "react";
-import ReactDOMServer from 'react-dom/server';
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-import { text } from '../facebook/FbPost.js'; // Relative path to your File
-
-
 import { ClipboardIcon, CodeIcon, ArrowsExpandIcon } from '@heroicons/react/solid';
-
-
 
 export default function Showcase(props) {
   console.log(props.component)
@@ -27,13 +21,15 @@ export default function Showcase(props) {
           <ClipboardIcon className="w-5 h-5" />
         </button>
       </div>
-      <div className="flex bg-gray-100 min-h-96">
-        <div className="w-full my-auto">
-          {props.component}
+      <div className="flex bg-gray-100">
+        <div className="m-auto">
+          <div className={props.class}>
+            {props.component}
+          </div>
         </div>
       </div>
-      <div className="">
-        <SyntaxHighlighter language="javascript" style={a11yDark} showLineNumbers>
+      <div className="hidden">
+        <SyntaxHighlighter language="javascript" style={a11yDark} showLineNumbers className="">
 
            Insert compoent code here...
         </SyntaxHighlighter>

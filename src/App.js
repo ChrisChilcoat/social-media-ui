@@ -9,10 +9,27 @@ import Breadcrumbs from "./components/site/Breadcrumbs";
 import ThreeColumnLayout from "./components/site/ThreeColumnLayout";
 import StackedLayout from "./components/site/StackedLayout";
 
+import FbButtonPrimary from "./components/facebook/FbButtonPrimary";
+import FbButtonSecondary from "./components/facebook/FbButtonSecondary";
+import FbButtonWhite from "./components/facebook/FbButtonWhite";
+import FbButtonCircle from "./components/facebook/FbButtonCircle";
+import FbButtonRounded from "./components/facebook/FbButtonRounded";
+import FbButtonGroup from "./components/facebook/FbButtonGroup";
+import FbButtonCircleDropdown from "./components/facebook/FbButtonCircleDropdown";
+
+import FbListHorizontal from "./components/facebook/FbListHorizontal";
+import FbListHorizontalIcons from "./components/facebook/FbListHorizontalIcons";
+import FbListHorizontalText from "./components/facebook/FbListHorizontalText";
+import FbListVertical from "./components/facebook/FbListVertical";
+
 import FbComposer from "./components/facebook/FbComposer";
 import FbContacts from "./components/facebook/FbContacts";
 import FbHeader from "./components/facebook/FbHeader";
-import FbPost from "./components/facebook/FbPost";
+
+import FbPostImage from "./components/facebook/FbPostImage";
+import FbPostImages from "./components/facebook/FbPostImages";
+import FbPostImagesComments from "./components/facebook/FbPostImagesComments";
+
 import FbNavigation from "./components/facebook/FbNavigation";
 import FbSponsord from "./components/facebook/FbSponsored";
 import FbShortcuts from './components/facebook/FbShortcuts';
@@ -32,14 +49,33 @@ export default function App() {
               />
             </Route>
             <Route path="/components/facebook/type"></Route>
-            <Route path="/components/facebook/buttons"></Route>
+            <Route path="/components/facebook/buttons">
+              <StackedLayout 
+                  header={<Header/>} 
+                  main={
+                    <>
+                      <Breadcrumbs parent='facebook' child="elements" headline="Buttons" />
+                      <Showcase class="p-10" component={<FbButtonPrimary/>} title="Primary button" />
+                      <Showcase class="p-10" component={<FbButtonSecondary/>} title="Secondary button" />
+                      <Showcase class="p-10" component={<FbButtonWhite/>} title="White button" />
+                      <Showcase class="p-10" component={<FbButtonRounded/>} title="Rounded button" />
+                      <Showcase class="p-10" component={<FbButtonCircle/>} title="circular button" />
+                      <Showcase class="p-10" component={<FbButtonCircleDropdown/>} title="Dropdown button" />
+                      <Showcase class="p-10" component={<FbButtonGroup/>} title="Button group" />
+                    </>
+                  }
+                />
+            </Route>
             <Route path="/components/facebook/lists">
               <StackedLayout 
                 header={<Header/>} 
                 main={
                   <>
                     <Breadcrumbs parent='facebook' child="elements" headline="Lists" />
-                    <Showcase component={<div class="w-96 m-auto"><FbNavigation/></div>} title="Vertial navigation" />
+                    <Showcase class="w-full py-4 m-auto" component={<FbListHorizontalIcons/>} title="Horizontal icon list with tooltips" />
+                    <Showcase class="w-full py-4 m-auto" component={<FbListHorizontalText/>} title="Horizontal list" />
+                    <Showcase class="w-full py-4 m-auto" component={<FbListHorizontal/>} title="Horizontal list with icons" />
+                    <Showcase class="w-96 py-4 m-auto" component={<FbListVertical/>} title="Vertial List" />
                   </>
                 }
               />
@@ -51,8 +87,8 @@ export default function App() {
                 header={<Header/>} 
                 main={
                   <>
-                    <Breadcrumbs parent='facebook' child="components" headline="Header" />
-                    <Showcase component={<FbHeader/>} title="Header" />
+                    <Breadcrumbs parent='facebook' child="components" headline="Headers" />
+                    <Showcase class="w-full" component={<FbHeader/>} title="Header" />
                   </>
                 }
               />
@@ -74,7 +110,9 @@ export default function App() {
                 main={
                   <>
                     <Breadcrumbs parent='facebook' child="components" headline="Posts" />
-                    <Showcase component={<FbPost/>} title="Post with images and comments" />
+                    <Showcase component={<FbPostImage/>} title="Post with image" />
+                    <Showcase component={<FbPostImages/>} title="Post with multiple images" />
+                    <Showcase component={<FbPostImagesComments/>} title="Post with multiple images and comments" />
                   </>
                 }
               />
@@ -120,7 +158,7 @@ export default function App() {
                               <FbStoriesPager/>
                               <FbComposer/>
                               <FbVideoPager/>
-                              <FbPost/>
+                              <FbPostImage/>
                             </>
                           } 
                           aside={
@@ -153,7 +191,7 @@ export default function App() {
                     <FbStoriesPager/>
                     <FbComposer/>
                     <FbVideoPager/>
-                    <FbPost/>
+                    <FbPostImage/>
                   </>
                 } 
                 aside={
