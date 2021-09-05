@@ -20,7 +20,7 @@ const navigation = [
 
 export default function FbListHorizontalText() {
   return (
-    <ul className="flex py-2 space-y-1">               
+    <ul className="inline-flex py-2 space-y-1">               
       {navigation.map((item) => (
         <li class={item.current ? 'border-b-4 border-blue-600 text-blue-600' : 'text-gray-600'}>
           <a

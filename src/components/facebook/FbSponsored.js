@@ -35,7 +35,7 @@ function FbSponsored() {
     const [referenceElement, setReferenceElement] = useState()
     const [popperElement, setPopperElement] = useState()
     const { styles, attributes } = usePopper(referenceElement, popperElement, { 
-      placement: 'bottom-start',
+      placement: 'bottom-end',
       modifiers: [
         {
           name: 'preventOverflow',

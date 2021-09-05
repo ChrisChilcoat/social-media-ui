@@ -6,7 +6,6 @@ import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { CodeIcon} from '@heroicons/react/solid';
 
 export default function Showcase(props) {
-  console.log(props.component)
   return (
     <div className="bg-white border border-gray-200 rounded-lg border-1 mb-14">
       <div className="flex items-center px-2 py-2 space-x-2 text-sm font-medium text-gray-700 border-b border-gray-200 whitespace-nowrap border-1">
@@ -15,8 +14,8 @@ export default function Showcase(props) {
           <CodeIcon className="w-5 h-5" />
         </button>
       </div>
-      <div className="flex max-w-full bg-gray-100">
-        <div className="m-auto">
+      <div className="bg-gray-100">
+        <div className="">
           <div className={props.class}>
             {props.component}
           </div>
