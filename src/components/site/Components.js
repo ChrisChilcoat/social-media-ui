@@ -47,6 +47,9 @@ export default function SitePageComponents() {
     <section class="divide-y divide-gray-200 mt-10">
       <header class="pb-6">
         <h2 id="facebook" class="text-2xl font-extrabold text-gray-900">Facebook</h2>
+        <p className="mt-3 text-base text-gray-500">
+          Examples of elements, components, and layouts from the worlds most popular social media website.
+        </p>
       </header>
       <div class="grid grid-cols-3 xl:grid-cols-4 py-8 gap-x-8 gap-y-6">
         <h3 id="facebook-elements" class="text-gray-900 font-semibold col-span-3 xl:col-span-1">Elements</h3>

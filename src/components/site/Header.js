@@ -14,7 +14,6 @@ export default function SiteHeader() {
             </NavLink>
             <div className="hidden ml-10 space-x-8 lg:block">
               <NavLink to='/components' className='text-base font-medium text-white hover:text-indigo-50' activeClassName='text-indigo-50'>Components</NavLink>
-              <NavLink to='/documentation' className='text-base font-medium text-white hover:text-indigo-50' activeClassName='text-indigo-50' exact>Documentation</NavLink>
             </div>
           </div>
           <div className="flex ml-10 align-middle">
@@ -22,7 +21,6 @@ export default function SiteHeader() {
         </div>
         <div className="flex flex-wrap justify-center py-4 space-x-6 lg:hidden">
           <NavLink to='/components' className='text-base font-medium text-white hover:text-indigo-50' activeClassName='text-indigo-50'>Components</NavLink>
-          <NavLink to='/documentation' className='text-base font-medium text-white hover:text-indigo-50' activeClassName='text-indigo-50' exact>Documentation</NavLink>
         </div>
       </nav>
     </header>

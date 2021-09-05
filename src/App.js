@@ -182,7 +182,15 @@ export default function App() {
               />
             </Route>
             <Route path="/documentation" exact>
-              <ThreeColumnLayout header={<Header/>}	/>
+              <ThreeColumnLayout 
+                header={<Header/>}
+                main={
+                  <>
+                    <Breadcrumbs headline="Documentation" />
+                     
+                  </>
+                }	
+              />
             </Route>
             <Route path="/components/facebook/full-screen/news-feed">
               <ThreeColumnLayout 
