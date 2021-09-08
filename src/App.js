@@ -56,13 +56,13 @@ export default function App() {
                   main={
                     <>
                       <Breadcrumbs parent='facebook' child="elements" headline="Buttons" />
-                      <Showcase class="p-10 text-center" component={<FbButtonPrimary/>} title="Primary button" />
-                      <Showcase class="p-10 text-center" component={<FbButtonSecondary/>} title="Secondary button" />
-                      <Showcase class="p-10 text-center" component={<FbButtonWhite/>} title="White button" />
-                      <Showcase class="p-10 text-center" component={<FbButtonRounded/>} title="Rounded button" />
-                      <Showcase class="p-10 text-center" component={<FbButtonCircle/>} title="circular button" />
-                      <Showcase class="p-10 text-center" component={<FbButtonCircleDropdown/>} title="Dropdown button" />
-                      <Showcase class="p-10 text-center" component={<FbButtonGroup/>} title="Button group" />
+                      <Showcase class="p-10 text-center" component={<FbButtonPrimary/>} syntaxBlock='FbButtonPrimary' title="Primary button" />
+                      <Showcase class="p-10 text-center" component={<FbButtonSecondary/>} syntaxBlock='FbButtonSecondary' title="Secondary button" />
+                      <Showcase class="p-10 text-center" component={<FbButtonWhite/>} syntaxBlock='FbButtonWhite' title="White button" />
+                      <Showcase class="p-10 text-center" component={<FbButtonRounded/>} syntaxBlock='FbButtonRounded' title="Rounded button" />
+                      <Showcase class="p-10 text-center" component={<FbButtonCircle/>} syntaxBlock='FbButtonCircle' title="circular button" />
+                      <Showcase class="p-10 text-center" component={<FbButtonCircleDropdown/>} syntaxBlock='FbButtonCircleDropdown' title="Dropdown button" />
+                      <Showcase class="p-10 text-center" component={<FbButtonGroup/>} syntaxBlock='FbButtonGroup'  title="Button group" />
                     </>
                   }
                 />
@@ -73,10 +73,10 @@ export default function App() {
                 main={
                   <>
                     <Breadcrumbs parent='facebook' child="elements" headline="Lists" />
-                    <Showcase class="py-4 text-center" component={<FbListHorizontalIcons/>} title="Horizontal icon list with tooltips" />
-                    <Showcase class="py-4 text-center" component={<FbListHorizontalText/>} title="Horizontal list" />
-                    <Showcase class="py-4 text-center" component={<FbListHorizontal/>} title="Horizontal list with icons" />
-                    <Showcase class="w-96 py-4 text-center m-auto" component={<FbListVertical/>} title="Vertial List" />
+                    <Showcase class="py-4 text-center" component={<FbListHorizontalIcons/>} syntaxBlock='FbListHorizontalIcons' title="Horizontal icon list with tooltips" />
+                    <Showcase class="py-4 text-center" component={<FbListHorizontalText/>} syntaxBlock='FbListHorizontalText' title="Horizontal list" />
+                    <Showcase class="py-4 text-center" component={<FbListHorizontal/>} syntaxBlock='FbListHorizontal' title="Horizontal list with icons" />
+                    <Showcase class="w-96 py-4 text-center m-auto" component={<FbListVertical/>} syntaxBlock='FbListVertical' title="Vertial List" />
                   </>
                 }
               />
@@ -89,7 +89,7 @@ export default function App() {
                 main={
                   <>
                     <Breadcrumbs parent='facebook' child="components" headline="Headers" />
-                    <Showcase class="w-full" component={<FbHeader/>} title="Header" />
+                    <Showcase class="w-full" component={<FbHeader/>} syntaxBlock='FbHeader' title="Header" />
                   </>
                 }
               />
@@ -100,7 +100,7 @@ export default function App() {
                 main={
                   <>
                     <Breadcrumbs parent='facebook' child="components" headline="Composer" />
-                    <Showcase class="py-4" component={<FbComposer/>} title="Composer with button bar" />
+                    <Showcase class="py-4" component={<FbComposer/>} syntaxBlock='FbComposer' title="Composer with button bar" />
                   </>
                 }  
               />
@@ -111,9 +111,9 @@ export default function App() {
                 main={
                   <>
                     <Breadcrumbs parent='facebook' child="components" headline="Posts" />
-                    <Showcase class="py-4" component={<FbPostImage/>} title="Post with image" />
-                    <Showcase class="py-4" component={<FbPostImages/>} title="Post with multiple images" />
-                    <Showcase class="py-4" component={<FbPostImagesComments/>} title="Post with multiple images and comments" />
+                    <Showcase class="py-4" component={<FbPostImage/>} syntaxBlock='FbPostImage' title="Post with image" />
+                    <Showcase class="py-4" component={<FbPostImages/>} syntaxBlock='FbPostImages' title="Post with multiple images" />
+                    <Showcase class="py-4" component={<FbPostImagesComments/>} syntaxBlock='FbPostImagesComments' title="Post with multiple images and comments" />
                   </>
                 }
               />
@@ -124,8 +124,8 @@ export default function App() {
                 main={
                   <>
                     <Breadcrumbs parent='facebook' child="components" headline="Pagers" />
-                    <Showcase class="py-4" component={<FbStoriesPager/>} title="Stories pager" />
-                    <Showcase class="py-4" component={<FbVideoPager/>} title="Video chat pager" />
+                    <Showcase class="py-4" component={<FbStoriesPager/>} syntaxBlock='FbStoriesPager' title="Stories pager" />
+                    <Showcase class="py-4" component={<FbVideoPager/>} syntaxBlock='FbVideoPager' title="Video chat pager" />
                   </>
                 }
               />
@@ -136,7 +136,7 @@ export default function App() {
                 main={
                   <>
                     <Breadcrumbs parent='facebook' child="components" headline="Sponsored" />
-                    <Showcase class="w-96 py-4 m-auto" component={<FbSponsord />} title="Sponsored widget with dropdown button" />
+                    <Showcase class="w-96 py-4 m-auto" component={<FbSponsord />} syntaxBlock='FbSponsord' title="Sponsored widget with dropdown button" />
                   </>
                 }
               />
@@ -179,17 +179,6 @@ export default function App() {
                     />
                   </>
                 }
-              />
-            </Route>
-            <Route path="/documentation" exact>
-              <ThreeColumnLayout 
-                header={<Header/>}
-                main={
-                  <>
-                    <Breadcrumbs headline="Documentation" />
-                     
-                  </>
-                }	
               />
             </Route>
             <Route path="/components/facebook/full-screen/news-feed">
