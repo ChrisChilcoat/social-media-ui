@@ -19,7 +19,7 @@ This project uses Github Pages served from the `/docs` directory.
 
 **Step 1:** Build the production site files.
 
-    npm run build
+    npm run predeploy
 
 **Step 2:** Push changes to 'master'.
 

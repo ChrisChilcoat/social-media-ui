@@ -19,7 +19,7 @@ export default function Showcase(props) {
   const initalDelay = 500 // Keeps tooltips from becoming annaying.
   const secondaryDelay = 0 // Speed up tooltips once they are open.
 
-  const [copyBtnText, setCopyBtnText] = useState('Copy');
+  const [copyBtnText, setCopyBtnText] = useState('Copy Markup');
 
   const [delay, setDelay] = useState(null)
   const [timeoutHandler, setTimeoutHandler] = useState(null)

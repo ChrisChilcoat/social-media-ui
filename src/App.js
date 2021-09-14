@@ -32,7 +32,7 @@ import FbPostImages from "./components/facebook/FbPostImages";
 import FbPostImagesComments from "./components/facebook/FbPostImagesComments";
 
 import FbNavigation from "./components/facebook/FbNavigation";
-import FbSponsord from "./components/facebook/FbSponsored";
+import FbSponsored from "./components/facebook/FbSponsored";
 import FbShortcuts from './components/facebook/FbShortcuts';
 import FbStoriesPager from "./components/facebook/FbStoriesPager";
 import FbVideoPager from "./components/facebook/FbVideoPager";
@@ -136,7 +136,7 @@ export default function App() {
                 main={
                   <>
                     <Breadcrumbs parent='facebook' child="components" headline="Sponsored" />
-                    <Showcase class="w-96 py-4 m-auto" component={<FbSponsord />} syntaxBlock='FbSponsord' title="Sponsored widget with dropdown button" />
+                    <Showcase class="w-96 py-4 m-auto" component={<FbSponsored />} syntaxBlock='FbSponsored' title="Sponsored widget with dropdown button" />
                   </>
                 }
               />
@@ -165,7 +165,7 @@ export default function App() {
                           } 
                           aside={
                             <>
-                              <FbSponsord/>
+                              <FbSponsored/>
                               <FbContacts/>
                             </>
                           } 
@@ -195,7 +195,7 @@ export default function App() {
                 } 
                 aside={
                   <>
-                    <FbSponsord/>
+                    <FbSponsored/>
                     <FbContacts/>
                   </>
                 } 
