@@ -23,9 +23,6 @@ This project uses Github Pages served from the `/docs` directory.
 
 **Step 2:** Push changes to 'master'.
 
-    git commit -m "<Enter commit message>"
-    git push
-
 **Step 3:** Make sure your GitHub Pages site is currently being built from the `/docs` folder in the `master` branch.
 
 [Update Build Source](https://github.com/ChrisChilcoat/social-media-ui/settings/pages)
