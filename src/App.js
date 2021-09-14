@@ -149,7 +149,8 @@ export default function App() {
                   <>
                     <Breadcrumbs parent='facebook' child="page-examples" headline="News Feed" />
                     <Showcase 
-                      title="News feed layout"  
+                      title="News feed layout"
+                      expandedUrl="/components/facebook/full-screen/news-feed"  
                       component={
                         <ThreeColumnLayout 
                           fixedHeader={false} 

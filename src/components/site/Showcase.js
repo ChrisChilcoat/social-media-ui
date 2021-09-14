@@ -3,10 +3,13 @@ import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import copy from "copy-to-clipboard";  
 import ReactTooltip from "react-tooltip";
+import { NavLink } from 'react-router-dom';
+
 
 import { 
   CodeIcon, 
-  ClipboardIcon 
+  ClipboardIcon,
+  ArrowsExpandIcon 
 } from '@heroicons/react/solid';
 
 export default function Showcase(props) {
@@ -63,7 +66,7 @@ export default function Showcase(props) {
   }
 
   const resetCopyBtnText = () => {
-    setCopyBtnText('Copy');
+    setCopyBtnText('Copy Markup');
   }
 
   const formatID = props => {
@@ -80,7 +83,7 @@ export default function Showcase(props) {
     )
   }
 
-  const RenderComponent = props =>  {  
+  const RenderExample = props =>  {  
     return (
       <div className={props.class}>
         {props.component}
@@ -92,7 +95,15 @@ export default function Showcase(props) {
     <div className="bg-white border border-gray-200 rounded-lg border-1 mb-14">
       <div className="flex items-center px-2 py-2 space-x-2 text-sm font-medium text-gray-700 border-b border-gray-200 whitespace-nowrap border-1">
         <div className="flex-1 ml-2">{props.title}</div>
-        <ul className="flex" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <ul className="flex" >
+          {props.expandedUrl &&
+            <li>
+              <NavLink to={props.expandedUrl} aria-label="View Full Sreen Example" data-tip data-for={formatID(props.title) + '-expand'}  className="inline-flex items-center px-2.5 py-2 text-gray-500 hover:text-gray-700 font-medium bg-white border border-transparent rounded-md hover:bg-gray-100">
+                <ArrowsExpandIcon className="w-5 h-5" />
+                <ReactTooltip class="" id={formatID(props.title)+'-expand'} arrowColor="transparent" delayShow={delay} place="top" effect="solid" aria-hidden="true">Expand</ReactTooltip>
+              </NavLink>
+            </li>
+          }
           <li>
             <button onClick={toggleCodeBlock} onFocus={handleFocus} aria-label="View Code Example" data-tip data-for={formatID(props.title) + '-show'}  className="inline-flex items-center px-2.5 py-2 text-gray-500 hover:text-gray-700 font-medium bg-white border border-transparent rounded-md hover:bg-gray-100">
               <CodeIcon className="w-5 h-5" />
@@ -110,7 +121,7 @@ export default function Showcase(props) {
         </ul>
       </div>
       <div className="bg-gray-100">
-        { syntaxBlock ? <RenderSyntax/> : <RenderComponent component={props.component} class={props.class}/> }
+        { syntaxBlock ? <RenderSyntax/> : <RenderExample component={props.component} class={props.class}/> }
       </div>
     </div>
   )
