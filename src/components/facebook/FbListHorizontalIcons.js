@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { 
   HomeIcon,
   PuzzleIcon,

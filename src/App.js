@@ -1,6 +1,5 @@
 import React from "react";
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import ScrollToTop from "./components/site//ScrollToTop";
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from "./components/site/Header";
 import Components from "./components/site/Components";
@@ -37,25 +36,26 @@ import FbShortcuts from './components/facebook/FbShortcuts';
 import FbStoriesPager from "./components/facebook/FbStoriesPager";
 import FbVideoPager from "./components/facebook/FbVideoPager";
 
+import DashboardLayout from "./components/site/Layout";
+
+function ScrollToTop() {
+  
+}
+
 export default function App() {
   return (
     <>   
-      <Router basename={process.env.PUBLIC_URL}>
-        <ScrollToTop>
-          <Switch>
-            <Route path="/components" exact>
-              <StackedLayout 
-                header={<Header/>} 
-                main={<Components/>} 
-              />
-            </Route>
-            <Route path="/components/facebook/type"></Route>
-            <Route path="/components/facebook/buttons">
-              <StackedLayout 
-                  header={<Header/>} 
+      <Router>
+          <Routes>
+            <Route path="/" element={ 
+              <StackedLayout main={<Home/>} />
+            }/>
+            <Route path="/elements/buttons" exact element={
+              <>
+                <DashboardLayout
                   main={
                     <>
-                      <Breadcrumbs parent='facebook' child="elements" headline="Buttons" />
+                      <span class='prose'><h1 class="mb-10">Buttons</h1></span>
                       <Showcase class="p-10 text-center" component={<FbButtonPrimary/>} syntaxBlock='FbButtonPrimary' title="Primary button" />
                       <Showcase class="p-10 text-center" component={<FbButtonSecondary/>} syntaxBlock='FbButtonSecondary' title="Secondary button" />
                       <Showcase class="p-10 text-center" component={<FbButtonWhite/>} syntaxBlock='FbButtonWhite' title="White button" />
@@ -66,124 +66,140 @@ export default function App() {
                     </>
                   }
                 />
-            </Route>
-            <Route path="/components/facebook/lists">
-              <StackedLayout 
-                header={<Header/>} 
-                main={
-                  <>
-                    <Breadcrumbs parent='facebook' child="elements" headline="Lists" />
-                    <Showcase class="py-4 text-center" component={<FbListHorizontalIcons/>} syntaxBlock='FbListHorizontalIcons' title="Horizontal icon list with tooltips" />
-                    <Showcase class="py-4 text-center" component={<FbListHorizontalText/>} syntaxBlock='FbListHorizontalText' title="Horizontal list" />
-                    <Showcase class="py-4 text-center" component={<FbListHorizontal/>} syntaxBlock='FbListHorizontal' title="Horizontal list with icons" />
-                    <Showcase class="w-96 py-4 text-center m-auto" component={<FbListVertical/>} syntaxBlock='FbListVertical' title="Vertial List" />
-                  </>
-                }
-              />
-            </Route>
-            <Route path="/components/facebook/avatars"></Route>
-            <Route path="/components/facebook/forms"></Route>
-            <Route path="/components/facebook/header">
-              <StackedLayout 
-                header={<Header/>} 
-                main={
-                  <>
-                    <Breadcrumbs parent='facebook' child="components" headline="Headers" />
-                    <Showcase class="w-full" component={<FbHeader/>} syntaxBlock='FbHeader' title="Header" />
-                  </>
-                }
-              />
-            </Route>
-            <Route path="/components/facebook/composer">
-              <StackedLayout 
-                header={<Header/>} 
-                main={
-                  <>
-                    <Breadcrumbs parent='facebook' child="components" headline="Composer" />
-                    <Showcase class="py-4" component={<FbComposer/>} syntaxBlock='FbComposer' title="Composer with button bar" />
-                  </>
-                }  
-              />
-            </Route>
-            <Route path='/components/facebook/posts'>
-              <StackedLayout 
-                header={<Header/>} 
-                main={
-                  <>
-                    <Breadcrumbs parent='facebook' child="components" headline="Posts" />
-                    <Showcase class="py-4" component={<FbPostImage/>} syntaxBlock='FbPostImage' title="Post with image" />
-                    <Showcase class="py-4" component={<FbPostImages/>} syntaxBlock='FbPostImages' title="Post with multiple images" />
-                    <Showcase class="py-4" component={<FbPostImagesComments/>} syntaxBlock='FbPostImagesComments' title="Post with multiple images and comments" />
-                  </>
-                }
-              />
-            </Route>
-            <Route path='/components/facebook/pagers'>
-              <StackedLayout 
-                header={<Header/>} 
-                main={
-                  <>
-                    <Breadcrumbs parent='facebook' child="components" headline="Pagers" />
-                    <Showcase class="py-4" component={<FbStoriesPager/>} syntaxBlock='FbStoriesPager' title="Stories pager" />
-                    <Showcase class="py-4" component={<FbVideoPager/>} syntaxBlock='FbVideoPager' title="Video chat pager" />
-                  </>
-                }
-              />
-            </Route>
-            <Route path="/components/facebook/sponsored">
-              <StackedLayout 
-                header={<Header/>} 
-                main={
-                  <>
-                    <Breadcrumbs parent='facebook' child="components" headline="Sponsored" />
-                    <Showcase class="w-96 py-4 m-auto" component={<FbSponsored />} syntaxBlock='FbSponsored' title="Sponsored widget with dropdown button" />
-                  </>
-                }
-              />
-            </Route>
-            <Route path="/components/facebook/layouts"></Route>
-            <Route path="/components/facebook/news-feed">
-              <StackedLayout 
-                header={<Header/>} 
-                main={
-                  <>
-                    <Breadcrumbs parent='facebook' child="page-examples" headline="News Feed" />
-                    <Showcase 
-                      title="News feed layout"
-                      expandedUrl="/components/facebook/full-screen/news-feed"  
-                      component={
-                        <ThreeColumnLayout 
-                          fixedHeader={false} 
-                          header={<FbHeader/>}
-                          main={
-                            <>
-                              <FbStoriesPager/>
-                              <FbComposer/>
-                              <FbVideoPager/>
-                              <FbPostImage/>
-                            </>
-                          } 
-                          aside={
-                            <>
-                              <FbSponsored/>
-                              <FbContacts/>
-                            </>
-                          } 
-                          sidebar={
-                            <>
-                              <FbNavigation/>
-                              <FbShortcuts/>
-                            </>
-                          } 
-                        />
+                <ScrollToTop/>
+              </>
+            }/>
+            <Route path="/elements/lists" exact element={
+              <>
+                <DashboardLayout
+                  main={
+                    <>
+                      <span class='prose'><h1 class="mb-10">Lists</h1></span>
+                      <Showcase class="py-4 text-center" component={<FbListHorizontalIcons/>} syntaxBlock='FbListHorizontalIcons' title="Horizontal icon list with tooltips" />
+                      <Showcase class="py-4 text-center" component={<FbListHorizontalText/>} syntaxBlock='FbListHorizontalText' title="Horizontal list" />
+                      <Showcase class="py-4 text-center" component={<FbListHorizontal/>} syntaxBlock='FbListHorizontal' title="Horizontal list with icons" />
+                      <Showcase class="w-96 py-4 text-center m-auto" component={<FbListVertical/>} syntaxBlock='FbListVertical' title="Vertial List" />
+                    </>
+                  }
+                />
+                <ScrollToTop/>
+              </>
+            }/>
+            <Route path="/components/header" exact element={
+              <>
+                <DashboardLayout
+                  main={
+                    <>
+                      <span class='prose'><h1 class="mb-10">Header</h1></span>
+                      <Showcase class="w-full" component={<FbHeader/>} syntaxBlock='FbHeader' title="Header" />
+                    </>
+                  }
+                />
+                <ScrollToTop/>
+              </>
+            }/>
+            <Route path="/components/composer" exact element={
+              <>
+                <DashboardLayout
+                  main={
+                    <>
+                      <span class='prose'><h1 class="mb-10">Composer</h1></span>
+                      <Showcase class="py-4" component={<FbComposer/>} syntaxBlock='FbComposer' title="Composer with button bar" />
+                    </>
+                  }
+                />
+                <ScrollToTop/>
+              </>
+            }/>
+            <Route path='/components/posts' exact element={
+              <>
+                <DashboardLayout
+                  main={
+                    <>
+                      <span class='prose'><h1 class="mb-10">posts</h1></span>
+                      <Showcase class="py-4" component={<FbPostImage/>} syntaxBlock='FbPostImage' title="Post with image" />
+                      <Showcase class="py-4" component={<FbPostImages/>} syntaxBlock='FbPostImages' title="Post with multiple images" />
+                      <Showcase class="py-4" component={<FbPostImagesComments/>} syntaxBlock='FbPostImagesComments' title="Post with multiple images and comments" />
+                    </>
+                  }
+                />
+                <ScrollToTop/>
+              </>
+            }/>
+            <Route path='/components/pagers' exact element={
+              <>
+                <DashboardLayout
+                  main={
+                    <>
+                      <span class='prose'><h1 class="mb-10">Pagers</h1></span>
+                      <Showcase class="py-4" component={<FbStoriesPager/>} syntaxBlock='FbStoriesPager' title="Stories pager" />
+                      <Showcase class="py-4" component={<FbVideoPager/>} syntaxBlock='FbVideoPager' title="Video chat pager" />
+                    </>
+                  }
+                />
+                <ScrollToTop/>
+              </>
+            }/>
+            <Route path="/components/sponsored" exact element={
+              <>
+                <DashboardLayout
+                  main={
+                    <>
+                      <span class='prose'><h1 class="mb-10">Sponsored</h1></span>
+                      <Showcase class="w-96 py-4 m-auto" component={<FbSponsored />} syntaxBlock='FbSponsored' title="Sponsored widget with dropdown button" />
+                    </>
+                  }
+                />
+                <ScrollToTop/>
+              </>
+            }/>
+            <Route path="/examples/news-feed" exact element={
+            <>
+
+                    <DashboardLayout
+                      main={
+                        <>
+                          <span class='prose'><h1 class="mb-10">News Feed</h1></span>
+                          <Showcase 
+                            title="News feed layout"
+                            expandedUrl="/components/facebook/full-screen/news-feed"  
+                            component={
+                              <ThreeColumnLayout 
+                                fixedHeader={false} 
+                                header={<FbHeader/>}
+                                main={
+                                  <>
+                                    <FbStoriesPager/>
+                                    <FbComposer/>
+                                    <FbVideoPager/>
+                                    <FbPostImage/>
+                                  </>
+                                } 
+                                aside={
+                                  <>
+                                    <FbSponsored/>
+                                    <FbContacts/>
+                                  </>
+                                } 
+                                sidebar={
+                                  <>
+                                    <FbNavigation/>
+                                    <FbShortcuts/>
+                                  </>
+                                } 
+                              />
+                            }
+                          />                        
+                        </>
                       }
                     />
-                  </>
-                }
-              />
-            </Route>
-            <Route path="/components/facebook/full-screen/news-feed">
-              <ThreeColumnLayout 
+
+              <ScrollToTop/>
+            </>
+            }/>
+            <Route path="/components/facebook/full-screen/news-feed" exact element={
+            <>
+                <ThreeColumnLayout 
                 header={<FbHeader/>}
                 main={
                   <>
@@ -206,12 +222,10 @@ export default function App() {
                   </>
                 } 
               />
-            </Route>
-            <Route path="/">
-              <StackedLayout main={<Home/>} />
-            </Route>
-          </Switch>
-        </ScrollToTop>
+              <ScrollToTop/>
+            </>
+            }/>
+          </Routes>
       </Router>
     </>
   )

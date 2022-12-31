@@ -1,23 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/*
-@layer utilities {
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide:{
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .__react_component_tooltip {
-    padding: 6px 8px !important;
-  }
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
-@variants group-hover, hover, focus {
-  .visible {
-    visibility: visible;
-  }
-} 
-*/
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.__react_component_tooltip {
+  padding: 6px 8px !important;
+}
+
 

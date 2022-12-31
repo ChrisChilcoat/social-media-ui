@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import copy from "copy-to-clipboard";  
-import ReactTooltip from "react-tooltip";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { NavLink } from 'react-router-dom';
 
 
@@ -59,7 +59,7 @@ export default function Showcase(props) {
   const copyToClipboard = () => {
     fetch( process.env.PUBLIC_URL + '/tmp/' + props.syntaxBlock + '.js:r.txt')
     .then((r) => r.text())
-    .then(text  => {copy(text)})
+    .then(text  => {CopyToClipboard(text)})
     .then(() => {
       setCopyBtnText('Copied!');
     })
