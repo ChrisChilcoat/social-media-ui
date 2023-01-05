@@ -12,7 +12,7 @@ export default function SiteHeader() {
           <span className="block xl:inline"> UI</span>
 	        </h1>
 	        <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl md:mt-5 md:text-xl ">
-					  A collection of popular social media widgets and layouts recreated using TailwindCSS and ReactJS.
+					 A Smorgasbord of Trendy Social Media Widgets and Layouts, Remade with TailwindCSS and ReactJS Magic.
 	        </p>
 	        <div className="mt-5 sm:mt-8 sm:flex lg:justify-start">
 	          <div className="rounded-full">
