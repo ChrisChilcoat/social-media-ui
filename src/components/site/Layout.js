@@ -11,15 +11,14 @@ const elements =  [
   { name: 'Lists', href: '/elements/lists', icon: ViewBoardsIcon },
 ]
 const components =  [
-  { name: 'Header', href: '/components/header', icon: PuzzleIcon },
+  { name: 'Header', href: '/components/full-screen/header', icon: PuzzleIcon },
   { name: 'Composer', href: '/components/composer', icon: PuzzleIcon },
   { name: 'Pagers', href: '/components/pagers', icon: PuzzleIcon },
   { name: 'Posts', href: '/components/posts', icon: PuzzleIcon },
   { name: 'Sponsored', href: '/components/sponsored', icon: PuzzleIcon },
-
 ]
 const examples =  [
-  { name: 'News Feed', href: '/examples/news-feed', icon: ViewBoardsIcon },
+  { name: 'News Feed', href: '/examples/full-screen/news-feed', icon: ViewBoardsIcon },
 ]
 
 DashboardLayout.propTypes = {

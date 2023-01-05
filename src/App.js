@@ -197,9 +197,9 @@ export default function App() {
               <ScrollToTop/>
             </>
             }/>
-            <Route path="/components/facebook/full-screen/news-feed" exact element={
+            <Route path="/examples/full-screen/news-feed" exact element={
             <>
-                <ThreeColumnLayout 
+              <ThreeColumnLayout 
                 header={<FbHeader/>}
                 main={
                   <>
@@ -207,6 +207,8 @@ export default function App() {
                     <FbComposer/>
                     <FbVideoPager/>
                     <FbPostImage/>
+                    <FbPostImages/>
+                    <FbPostImagesComments/>
                   </>
                 } 
                 aside={
@@ -224,8 +226,16 @@ export default function App() {
               />
               <ScrollToTop/>
             </>
-            }/>
-          </Routes>
+          }/>
+          <Route path="/components/full-screen/header" exact element={
+            <>
+              <ThreeColumnLayout 
+                header={<FbHeader/>}
+              />
+              <ScrollToTop/>
+            </>
+          }/>
+        </Routes>
       </Router>
     </>
   )
